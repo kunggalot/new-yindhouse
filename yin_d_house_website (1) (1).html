@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<!-- Yin.D House One-Page v1.6.9 (2025-08-15) -->
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Yin.D House | จัดเลี้ยง-คาราโอเกะ-อาหารไทย ยุโรป | ศรีราชา</title>
+  <meta name="description" content="ยินดีเฮาส์ (Yin.D House) บริการจัดเลี้ยงครบวงจร นอกสถานที่/ในสถานที่ อาหารไทย ยุโรป ห้องคาราโอเกะ ติดต่อจองได้เลย ศรีราชา ชลบุรี" />
+  <meta property="og:title" content="Yin.D House | จัดเลี้ยงครบวงจร ศรีราชา" />
+  <meta property="og:description" content="อาหารอร่อย บริการครบ จบในที่เดียว • จัดงานบุญ งานแต่ง งานบวช งานบริษัท • คาราโอเกะ • ครบครัน" />
+  <meta property="og:type" content="website" />
+  <link rel="canonical" href="https://yindhouse.com/" />
+  <meta property="og:locale" content="th_TH" />
+  <!-- Open Graph / Twitter image -->
+  <meta property="og:image" content="https://i.ibb.co/MysDpCcC/Logo-Yin-DHouse.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:alt" content="โลโก้ Yin.D House" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://i.ibb.co/MysDpCcC/Logo-Yin-DHouse.png" />
+  <meta name="twitter:image:alt" content="โลโก้ Yin.D House" />
+  <!-- Favicon / App icons from brand logo -->
+  <link rel="icon" type="image/png" sizes="32x32" href="https://i.ibb.co/MysDpCcC/Logo-Yin-DHouse.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://i.ibb.co/MysDpCcC/Logo-Yin-DHouse.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="https://i.ibb.co/MysDpCcC/Logo-Yin-DHouse.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://i.ibb.co/MysDpCcC/Logo-Yin-DHouse.png">
+  <link rel="shortcut icon" href="https://i.ibb.co/MysDpCcC/Logo-Yin-DHouse.png">
+  <meta name="theme-color" content="#123f20" />
+  <meta name="x-version" content="1.6.9" />
+  <link rel="preconnect" href="https://cdn.tailwindcss.com" />
+  <link rel="dns-prefetch" href="https://cdn.tailwindcss.com" />
+  <link rel="preconnect" href="https://i.ibb.co" crossorigin>
+  <link rel="dns-prefetch" href="https://i.ibb.co">
+  <link rel="preconnect" href="https://img2.pic.in.th" crossorigin>
+  <link rel="dns-prefetch" href="https://img2.pic.in.th">
+  <!-- Leaflet (OSM) for map fallback -->
+  <link rel="preconnect" href="https://unpkg.com">
+  <link rel="dns-prefetch" href="https://unpkg.com">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <!-- Preload hero image to improve LCP -->
+  <link rel="preload" as="image" href="https://i.ibb.co/5hqWGBVb/LINE-ALBUM-250721-3.jpg">
+
+  <!-- Tailwind CSS (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {  
+          colors: {
+            brand: {50:'#f3faf4',100:'#e5f5e7',200:'#cbedcf',300:'#a1e0ad',400:'#6fcd81',500:'#3fb85a',600:'#2e9846',700:'#24783a',800:'#1a5e2e',900:'#123f20'},
+            gold: {400:'#d4af37',500:'#b9932a',600:'#987a21'}
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    .glass { backdrop-filter: blur(10px); background: rgba(255,255,255,.08); }
+    .section { scroll-margin-top: 96px; }
+    :root { -webkit-tap-highlight-color: rgba(255,255,255,.08); 
+      /* Card shadow tokens */
+      --card-border: rgba(255,255,255,0.10);
+      --card-bs1: rgba(0,0,0,0.05); --card-bs1-y: 3px; --card-bs1-blur: 6px;
+      --card-bs2: rgba(0,0,0,0.10); --card-bs2-y: 8px; --card-bs2-blur: 15px;
+      --card-h-border: rgba(255,255,255,0.20);
+      --card-h-bs1: rgba(0,0,0,0.04); --card-h-bs1-y: 5px; --card-h-bs1-blur: 10px;
+      --card-h-bs2: rgba(0,0,0,0.30); --card-h-bs2-y: 15px; --card-h-bs2-blur: 25px;
+    }
+    input, textarea, button, a.button-like { min-height: 44px; }
+
+    /* Glow border (shimmer) — ใช้งานเวลา CTA แพ็กเกจถูกกด */
+    .glow-shimmer{position:relative; isolation:isolate; --glow-o:1; --glow-pad:2px;}
+    .glow-shimmer::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:var(--glow-pad);opacity:var(--glow-o);transition:opacity 1.05s cubic-bezier(.16,1,.3,1);background:linear-gradient(120deg,rgba(212,175,55,.85),rgba(63,184,90,.85),rgba(212,175,55,.85));background-size:200% 100%;-webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:shimmer 3s ease-in-out infinite;pointer-events:none;will-change:opacity,background-position}
+    .glow-shimmer::after{content:"";position:absolute;inset:-2px;border-radius:inherit;pointer-events:none;background:linear-gradient(120deg,rgba(212,175,55,.6),rgba(63,184,90,.6),rgba(212,175,55,.6));background-size:200% 100%;filter:blur(12px);opacity:calc(var(--glow-o)*.28);mix-blend-mode:screen;animation:shimmer 3.6s ease-in-out infinite;transition:opacity 1.15s cubic-bezier(.16,1,.3,1), filter .8s ease}
+    .glow-shimmer .line-label{-webkit-text-fill-color:currentColor;background:none}
+    @keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+  
+
+    /* --- Package Card Hover Effects --- */
+    @media (hover:hover){
+      .pkg-card{position:relative;overflow:hidden;transition:transform .2s ease,box-shadow .25s ease,background-color .25s ease;will-change:transform,box-shadow;contain:paint;
+        box-shadow:0 var(--card-bs1-y) var(--card-bs1-blur) var(--card-bs1),0 var(--card-bs2-y) var(--card-bs2-blur) var(--card-bs2),0 0 0 1px var(--card-border);
+      }
+      .pkg-card:hover{transform:translateY(-2px);
+        box-shadow:0 var(--card-h-bs1-y) var(--card-h-bs1-blur) var(--card-h-bs1),0 var(--card-h-bs2-y) var(--card-h-bs2-blur) var(--card-h-bs2),0 0 0 1px var(--card-h-border);
+      }
+      /* soft shine overlay (no layout shift) */
+      .pkg-card::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .25s ease;
+        background:radial-gradient(600px 200px at 50% -20%, rgba(212,175,55,.12), transparent 60%);
+      }
+      .pkg-card:hover::after{opacity:.8}
+      .pkg-card .price{transition:transform .2s ease;will-change:transform}
+      .pkg-card:hover .price{transform:translateY(-1px)}
+      .pkg-card .cta{transition:transform .2s ease,box-shadow .2s ease;will-change:transform}
+      .pkg-card:hover .cta{transform:translateY(-1px);box-shadow:0 6px 14px rgba(212,175,55,.12)}
+    }
+  @media (prefers-reduced-motion: reduce){.pkg-card,.pkg-card::after,.pkg-card .price,.pkg-card .cta,.svc-card,.svc-card::after{transition:none !important;animation:none !important} .faq-content{position:static;padding:0 1rem 1rem 4.25rem;overflow:visible;opacity:1;pointer-events:auto;transition:none} .glow-shimmer::before,.glow-shimmer::after,.glow-shimmer .line-label{animation:none !important} .glow-shimmer .line-label{-webkit-text-fill-color:currentColor;background:none}}
+  
+
+    /* ===== FAQ Remix ===== */
+    .faq-item{position:relative;border-radius:var(--faq-radius,16px);background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12);margin:0;overflow:hidden}
+    .faq-item::before{content:"";position:absolute;inset:-1px;border-radius:var(--faq-highlight-radius,20px);padding:1px;background:linear-gradient(120deg,rgba(212,175,55,.35),rgba(63,184,90,.25));opacity:.6;transition:opacity .25s ease;-webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+    .faq-item:hover::before{opacity:.85}
+    .faq-summary{list-style:none;display:flex;gap:.75rem;align-items:center;padding:.75rem 1rem;cursor:default}
+    .faq-summary::-webkit-details-marker{display:none}
+    .faq-summary:focus-visible{outline:none;box-shadow:0 0 0 2px rgba(63,184,90,.45);border-radius:12px}
+    .faq-icon{display:grid;place-items:center;width:36px;height:36px;border-radius:12px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);font-size:18px}
+    .faq-title{font-weight:600}
+    .faq-chev{display:none}
+    
+    .faq-content{position:static;padding:0 1rem 1rem 4.25rem;overflow:visible;opacity:1;pointer-events:auto;transition:none}
+    
+    .faq-content>div{overflow:visible}
+    .faq-body{padding:0;color:rgb(212 212 216);font-size:clamp(.8rem,.8rem + .05vw,.9rem);line-height:1.6}
+    /* Masonry-style columns for FAQ to prevent whole-row expansion */
+    .faq-masonry{column-gap:1.5rem}
+    @media (min-width:768px){.faq-masonry{columns:2}}
+    @media (max-width:767.98px){.faq-masonry{columns:1}}
+  
+
+    /* FAQ radius vars */
+    :root{ --faq-radius:16px; --faq-highlight-radius:20px; --faq-locked-h:200px; --faq-summary-h:64px; }
+    @media (min-width:768px){ :root{ --faq-locked-h:220px; --faq-summary-h:64px; }}
+  
+
+    /* --- Services Card Hover Effects (match Packages) --- */
+    @media (hover:hover){
+      .svc-card{position:relative;overflow:hidden;transition:transform .2s ease,box-shadow .25s ease,background-color .25s ease;will-change:transform,box-shadow;contain:paint;
+        box-shadow:0 var(--card-bs1-y) var(--card-bs1-blur) var(--card-bs1),0 var(--card-bs2-y) var(--card-bs2-blur) var(--card-bs2),0 0 0 1px var(--card-border);
+      }
+      .svc-card:hover{transform:translateY(-2px);
+        box-shadow:0 var(--card-h-bs1-y) var(--card-h-bs1-blur) var(--card-h-bs1),0 var(--card-h-bs2-y) var(--card-h-bs2-blur) var(--card-h-bs2),0 0 0 1px var(--card-h-border);
+      }
+      .svc-card::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .25s ease;
+        background:radial-gradient(600px 200px at 50% -20%, rgba(212,175,55,.10), transparent 60%);
+      }
+      .svc-card:hover::after{opacity:.8}
+    }
+  
+
+    /* --- Package Label Pill (BUFFET / MERIT / KARAOKE) --- */
+    .pkg-pill{display:inline-flex;align-items:center;gap:.35rem;padding:.3rem .6rem;border-radius:9999px;text-transform:uppercase;letter-spacing:.12em;font-weight:700;font-size:.75rem;background:linear-gradient(180deg,rgba(255,255,255,.10),rgba(255,255,255,.04));border:1px solid rgba(255,255,255,.18);box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 6px 12px rgba(0,0,0,.18)}
+    .pkg-card:hover .pkg-pill{border-color:rgba(255,255,255,.28);background:linear-gradient(180deg,rgba(255,255,255,.14),rgba(255,255,255,.05))}
+  
+
+    /* Merit swap removed in v1.5.10 revert */
+
+    /* v1.4.0 – Smoother gallery sheen (fade & feathered edges) */
+    :root{ --sheen-dur:2s; --sheen-fade:.8s; --sheen-angle:-18deg; --sheen-opa:.6; }
+    .sheen{position:relative;overflow:hidden}
+    .sheen::after{content:"";position:absolute;inset:-25% -65%;transform:translate3d(-125%,0,0) skewX(var(--sheen-angle));background:linear-gradient(115deg,rgba(255,255,255,0) 0%,rgba(255,255,255,.35) 50%,rgba(255,255,255,0) 100%);-webkit-mask-image:linear-gradient(to right, rgba(0,0,0,0) 0%, #000 15%, #000 85%, rgba(0,0,0,0) 100%);mask-image:linear-gradient(to right, transparent 0%, #000 15%, #000 85%, transparent 100%);filter:blur(.5px);opacity:0;pointer-events:none;border-radius:inherit;transition:transform var(--sheen-dur) cubic-bezier(.16,1,.3,1), opacity var(--sheen-fade) ease-in-out;}
+    @media (hover:hover){
+      .sheen:hover::after,.sheen:focus-within::after{transform:translate3d(135%,0,0) skewX(var(--sheen-angle));opacity:var(--sheen-opa)}
+    }
+    .sheen-run::after{transform:translate3d(135%,0,0) skewX(var(--sheen-angle));opacity:var(--sheen-opa)}
+    @media (prefers-reduced-motion: reduce){.sheen::after{transition:none !important;animation:none !important}}
+  
+    /* Gallery hover zoom (ภาพบรรยากาศ & รีวิว) */
+    @media (hover:hover){
+      #gallery .sheen img{transition:transform .35s cubic-bezier(.16,1,.3,1);will-change:transform}
+      #gallery .sheen:hover img,#gallery .sheen:focus-within img{transform:scale(1.06)}
+    }
+    @media (prefers-reduced-motion: reduce){
+      #gallery .sheen img{transition:none !important;transform:none !important}
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "Yin.D House",
+    "servesCuisine": ["Thai","European"],
+    "address": {"@type":"PostalAddress","addressLocality":"Si Racha","addressRegion":"Chonburi","addressCountry":"TH"},
+    "areaServed": "Chonburi",
+    "url": "https://yindhouse.com/", 
+    "telephone": "+66",
+    "sameAs": ["https://facebook.com/","https://line.me/"],
+    "amenityFeature": [
+      {"@type":"LocationFeatureSpecification","name":"คาราโอเกะ","value":true},
+      {"@type":"LocationFeatureSpecification","name":"รับจัดเลี้ยงนอกสถานที่","value":true}
+    ]
+  }
+  </script>
+</head>
+<body class="bg-neutral-950 text-neutral-100 antialiased">
+  <!-- Header -->
+  <header class="fixed inset-x-0 top-0 z-50 bg-neutral-950/70 glass border-b border-white/10">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="flex items-center justify-between h-16">
+        <a href="#" class="flex items-center gap-2">
+          <img id="brandLogo" class="h-8 sm:h-16 w-auto drop-shadow shrink-0" alt="Yin.D House logo" decoding="async" fetchpriority="high"
+               src="https://i.ibb.co/MysDpCcC/Logo-Yin-DHouse.png">
+          <span class="font-semibold leading-none text-[15px] sm:text-base">Yin.D House</span>
+        </a>
+        <nav class="hidden md:flex gap-6 text-sm">
+          <a href="#services" class="hover:text-brand-300">บริการ</a>
+          <a href="#packages" class="hover:text-brand-300">แพ็กเกจ</a>
+          <a href="#gallery" class="hover:text-brand-300">รีวิว</a>
+          <a href="#faq" class="hover:text-brand-300">คำถามพบบ่อย</a>
+          <a href="#contact" class="hover:text-brand-300">ติดต่อ</a>
+        </nav>
+        <div class="flex items-center gap-2">
+          <a id="bookTopBtn" href="#contact" class="hidden sm:inline-flex items-center justify-center text-center px-3 py-2 rounded-xl bg-brand-600 hover:bg-brand-500 text-sm font-semibold button-like">จองคิวเลย</a>
+          <button id="menuBtn" class="md:hidden p-2 rounded-lg hover:bg-white/5" aria-label="เมนู" aria-controls="mobileMenu" aria-expanded="false">☰</button>
+        </div>
+      </div>
+    </div>
+    <!-- Mobile menu -->
+    <div id="mobileMenu" class="md:hidden hidden border-t border-white/10">
+      <nav class="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex flex-col gap-3 text-sm">
+        <a href="#services" class="hover:text-brand-300">บริการ</a>
+        <a href="#packages" class="hover:text-brand-300">แพ็กเกจ</a>
+        <a href="#gallery" class="hover:text-brand-300">รีวิว</a>
+        <a href="#faq" class="hover:text-brand-300">คำถามพบบ่อย</a>
+        <a href="#contact" class="hover:text-brand-300">ติดต่อ</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="section" id="hero">
+    <div class="relative pt-28">
+      <div class="absolute inset-0 -z-10">
+        <div class="absolute inset-0 bg-gradient-to-b from-brand-900 via-neutral-950 to-neutral-950"></div>
+        <div class="absolute inset-x-0 top-0 h-[420px] bg-[radial-gradient(50%_50%_at_50%_0%,rgba(111,205,129,0.35),rgba(0,0,0,0))]"></div>
+      </div>
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="grid md:grid-cols-2 gap-10 items-center">
+          <div>
+            <h1 class="text-xl sm:text-3xl font-extrabold leading-tight">อร่อยครบ<span class="text-gold-400">จบในที่เดียว</span></h1>
+            <p class="mt-4 text-neutral-300">ยินดีเฮาส์ — ผู้เชี่ยวชาญ <strong>จัดเลี้ยงครบวงจร</strong> ใน/นอกสถานที่ อาหาร <strong>ไทย • ยุโรป</strong> พร้อมห้องคาราโอเกะ</p>
+            <ul class="mt-6 grid gap-3 text-sm">
+              <li class="flex items-start gap-2"><span class="text-gold-400">★</span> <span>เพียงแจ้งวันไว้ล่วงหน้า <strong>ไม่จำกัดวัน</strong> — จองล่วงหน้าได้เลย</span></li>
+              <li class="flex items-start gap-2"><span class="text-gold-400">★</span> <span>ทีมงานมืออาชีพ อุปกรณ์พร้อมครบ ตั้งแต่โต๊ะ-เก้าอี้จนถึงเสิร์ฟ</span></li>
+              <li class="flex items-start gap-2"><span class="text-gold-400">★</span> <span>ดูแลตั้งแต่วางแผน เมนู ไปจนถึงเก็บงานหน้างาน</span></li>
+            </ul>
+            <div class="mt-8 flex flex-wrap gap-3">
+              <a href="#packages" class="px-5 py-3 rounded-xl bg-gold-500 hover:bg-gold-400 font-semibold button-like">ดูแพ็กเกจ</a>
+              <a href="#contact" class="px-5 py-3 rounded-xl bg-white/10 hover:bg-white/20 button-like">สอบถาม / เช็คคิว</a>
+            </div>
+          </div>
+          <div>
+            <div class="aspect-video rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
+              <img id="heroImg" src="https://i.ibb.co/5hqWGBVb/LINE-ALBUM-250721-3.jpg" alt="ภาพบรรยากาศอาหารและคาราโอเกะ Yin.D House" width="1920" height="1080" sizes="(min-width: 768px) 50vw, 100vw" class="w-full h-full object-cover" decoding="async" fetchpriority="high" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services" class="section py-20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <h2 class="text-2xl sm:text-3xl font-bold">บริการของเรา</h2>
+      <p class="mt-2 text-neutral-300">ครอบคลุมตั้งแต่การวางแผน จัดเตรียมอุปกรณ์ ทำอาหาร เสิร์ฟ ไปจนถึงเก็บงาน</p>
+      <div class="mt-8 grid md:grid-cols-3 gap-6">
+        <div class="svc-card group rounded-2xl border border-white/10 p-6 bg-white/5 transform-gpu">
+          <div class="text-3xl">🍛</div>
+          <h3 class="mt-3 font-semibold">ครัวไทย • ยุโรป</h3>
+          <p class="mt-2 text-sm text-neutral-300">เมนูหลากหลาย ปรับรส-ชุดเสิร์ฟได้ตามงบ ทั้งบุฟเฟต์/เซ็ตอาหาร/ข้าวกล่อง</p>
+        </div>
+        <div class="svc-card group rounded-2xl border border-white/10 p-6 bg-white/5 transform-gpu">
+          <div class="text-3xl">🥂</div>
+          <h3 class="mt-3 font-semibold">จัดเลี้ยงใน/นอกสถานที่</h3>
+          <p class="mt-2 text-sm text-neutral-300">งานบุญ งานแต่ง งานบวช งานบริษัท เปิดบ้าน เปิดตัวสินค้า เราดูแลให้ครบ</p>
+        </div>
+        <div class="svc-card group rounded-2xl border border-white/10 p-6 bg-white/5 transform-gpu">
+          <div class="text-3xl">🎤</div>
+          <h3 class="mt-3 font-semibold">ห้องคาราโอเกะส่วนตัว</h3>
+          <p class="mt-2 text-sm text-neutral-300">ห้องพร้อมระบบเสียง จอใหญ่ นั่งสบาย เหมาะกับสังสรรค์ทีม/ครอบครัว</p>
+        </div>
+      </div>
+
+      <div class="mt-6 grid md:grid-cols-3 gap-6">
+        <div class="svc-card group rounded-2xl border border-white/10 p-6 bg-white/5 transform-gpu">
+          <div class="text-3xl">🪑</div>
+          <h3 class="mt-3 font-semibold">อุปกรณ์หน้างานครบ</h3>
+          <p class="mt-2 text-sm text-neutral-300">โต๊ะ เก้าอี้ ผ้าคลุม ช้อนส้อม ถาดอุ่นอาหาร ป้ายเมนู พนักงานเสิร์ฟ</p>
+        </div>
+        <div class="svc-card group rounded-2xl border border-white/10 p-6 bg-white/5 transform-gpu">
+          <div class="text-3xl">🧭</div>
+          <h3 class="mt-3 font-semibold">วางแผน &amp; คุมงาน</h3>
+          <p class="mt-2 text-sm text-neutral-300">ดูแลไทม์ไลน์งาน หน้างาน และจบงานให้เรียบร้อย ไม่ต้องกังวล</p>
+        </div>
+        <div class="svc-card group rounded-2xl border border-white/10 p-6 bg-white/5 transform-gpu">
+          <div class="text-3xl">📦</div>
+          <h3 class="mt-3 font-semibold">บริการเพิ่ม</h3>
+          <p class="mt-2 text-sm text-neutral-300">เครื่องดื่ม ขนม ของหวาน ชุดพระ อื่นๆ ตามโจทย์และงบประมาณของลูกค้า</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Packages -->
+  <section id="packages" class="section py-20 bg-white/5 border-y border-white/10">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="flex items-end justify-between gap-4">
+        <div>
+          <h2 class="text-2xl sm:text-3xl font-bold">แพ็กเกจแนะนำ</h2>
+          <p class="mt-2 text-neutral-300">ตัวอย่างเรทราคาเพื่อการวางแผน (ปรับได้ตามจำนวนแขกและเมนู)</p>
+        </div>
+      </div>
+
+      <div class="mt-8 grid md:grid-cols-3 gap-6">
+        <!-- BUFFET -->
+        <div class="pkg-card group rounded-2xl border border-white/10 p-6 bg-neutral-900 transform-gpu">
+          <div><span class="pkg-pill text-brand-300">BUFFET</span></div>
+          <h3 class="mt-1 text-xl font-bold">บุฟเฟต์งานเลี้ยง</h3>
+          <p class="mt-2 text-sm text-neutral-300">5 เมนู + ของหวาน + น้ำดื่ม/น้ำสมุนไพร</p>
+          <div class="price mt-4 text-3xl font-extrabold">เริ่ม <span class="text-gold-400">฿280</span> / ท่าน</div>
+          <ul class="mt-4 text-sm grid gap-2 text-neutral-300">
+            <li>อุปกรณ์พร้อมเสิร์ฟครบ</li>
+            <li>ทีมงานบริการถึงที่</li>
+            <li>ฟรี! ค่าเดินทาง 30 กม.</li>
+          </ul>
+          <a href="#contact" class="cta mt-6 inline-flex w-full justify-center px-4 py-2 rounded-xl bg-gold-500 hover:bg-gold-400 font-semibold">สอบถามแพ็กเกจ</a>
+        </div>
+
+        <!-- MERIT (full only) -->
+        <div class="pkg-card group rounded-2xl border border-white/10 p-6 bg-neutral-900 transform-gpu">
+          <div><span class="pkg-pill text-brand-300">MERIT</span></div>
+          <h3 class="mt-1 text-xl font-bold">ชุดจัดงานบุญ</h3>
+          <p class="mt-2 text-sm text-neutral-300">พระสงฆ์ + อุปกรณ์</p>
+          <div class="price mt-4 text-3xl font-extrabold"><span class="text-gold-400">฿8,500</span> ครบชุด</div>
+          <ul class="mt-4 text-sm grid gap-2 text-neutral-300">
+            <li>มีบริการนิมนต์พระให้ครบ</li>
+            <li>ชุดอุปกรณ์พร้อม</li>
+            <li>จัดเตรียมงานล่วงหน้า 1 วัน</li>
+          </ul>
+          <a href="#contact" class="cta mt-6 inline-flex w-full justify-center px-4 py-2 rounded-xl bg-gold-500 hover:bg-gold-400 font-semibold">ขอรายละเอียด</a>
+        </div>
+
+        <!-- KARAOKE -->
+        <div class="pkg-card group rounded-2xl border border-white/10 p-6 bg-neutral-900 transform-gpu">
+          <div><span class="pkg-pill text-brand-300">KARAOKE</span></div>
+          <h3 class="mt-1 text-xl font-bold">ห้องคาราโอเกะ</h3>
+          <p class="mt-2 text-sm text-neutral-300">ห้องส่วนตัว • เสียงดี • เพลงเพราะ</p>
+          <div class="price mt-4 text-3xl font-extrabold"><span class="text-gold-400">฿400-500</span> / ห้อง</div>
+          <ul class="mt-4 text-sm grid gap-2 text-neutral-300">
+            <li>รองรับกลุ่มเล็กและกลาง</li>
+            <li>ห้องเล็กรองรับ 4-8 ท่าน ฿400/3hrs</li>
+            <li>ห้องใหญ่รองรับ 12-20 ท่าน ฿500/3hrs</li>
+          </ul>
+          <a href="#contact" class="cta mt-6 inline-flex w-full justify-center px-4 py-2 rounded-xl bg-gold-500 hover:bg-gold-400 font-semibold">เช็คคิวห้อง</a>
+        </div>
+      </div>
+
+      <p class="mt-6 text-xs text-neutral-400">* ราคาเพื่อการสื่อสารเท่านั้น ปรับได้ตามจำนวนแขก เมนู ระยะทาง และความต้องการเฉพาะ</p>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section id="gallery" class="section py-20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="flex items-end justify-between gap-4">
+        <div>
+          <h2 class="text-2xl sm:text-3xl font-bold">ภาพบรรยากาศ &amp; รีวิว</h2>
+          <p class="mt-2 text-neutral-300"> รวบรวมภาพบรรยากาศในร้านและนอกสถานที่</p>
+        </div>
+      </div>
+
+      <div class="mt-8 grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+        <div class="sheen aspect-[4/3] rounded-xl overflow-hidden border border-white/10"><img src="https://i.ibb.co/Y41pK3Xt/0a804898-0b28-4060-9d18-56864b99d13c.png" alt="รูปอาหารซิกเนเจอร์ Yin.D House" width="1600" height="1200" sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw" loading="lazy" decoding="async" fetchpriority="low" class="w-full h-full object-cover" /></div>
+        <div class="sheen aspect-[4/3] rounded-xl overflow-hidden border border-white/10"><img src="https://i.ibb.co/B23xP8rx/1S.png" alt="บุฟเฟต์หน้างาน Yin.D House" width="1600" height="1200" sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw" loading="lazy" decoding="async" fetchpriority="low" class="w-full h-full object-cover" /></div>
+        <div class="sheen aspect-[4/3] rounded-xl overflow-hidden border border-white/10"><img src="https://i.ibb.co/jZ17HwBb/image.png" alt="รีวิวลูกค้า Yin.D House" width="1600" height="1200" sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw" loading="lazy" decoding="async" fetchpriority="low" class="w-full h-full object-cover" /></div>
+        <div class="sheen aspect-[4/3] rounded-xl overflow-hidden border border-white/10"><img src="https://i.ibb.co/jvMQrgrd/daa.png" alt="ทีมงานเสิร์ฟ Yin.D House" width="1600" height="1200" sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw" loading="lazy" decoding="async" fetchpriority="low" class="w-full h-full object-cover" /></div>
+        <div class="sheen aspect-[4/3] rounded-xl overflow-hidden border border-white/10"><img src="https://i.ibb.co/tpybtFbj/S-10182672-0s.png" alt="ห้องคาราโอเกะ Yin.D House" width="1600" height="1200" sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw" loading="lazy" decoding="async" fetchpriority="low" class="w-full h-full object-cover" /></div>
+        <div class="sheen aspect-[4/3] rounded-xl overflow-hidden border border-white/10"><img src="https://i.ibb.co/9kW6SFxz/1.png" alt="งานแต่ง/งานบุญ Yin.D House" width="1600" height="1200" sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw" loading="lazy" decoding="async" fetchpriority="low" class="w-full h-full object-cover" /></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="section py-20 bg-white/5 border-y border-white/10">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="flex items-center justify-between gap-4">
+        <h2 class="text-2xl sm:text-3xl font-bold">คำถามที่พบบ่อย</h2>
+        <span class="hidden md:inline text-sm text-neutral-400">อัปเดตล่าสุด • ตอบทุกข้อใน 1 นาที</span>
+      </div>
+
+      <div class="mt-8 grid md:grid-cols-2 gap-6">
+        <article class="faq-item">
+          <div class="faq-summary">
+            <span class="faq-icon">🗓️</span>
+            <span class="faq-title">จองคิวล่วงนายังไง?</span>
+          </div>
+          <div class="faq-content"><div>
+            <p class="faq-body">ทักหาเรา พร้อมระบุวันที่ จำนวนแขก และประเภทงาน <strong>เพียงแจ้งวันไว้ล่วงหน้า ไม่จำกัดวัน</strong> ทีมงานจะเช็คคิวและเสนอแพ็กเกจให้ทันที</p>
+          </div></div>
+        </article>
+
+        <article class="faq-item">
+          <div class="faq-summary">
+            <span class="faq-icon">💰</span>
+            <span class="faq-title">คิดราคาอย่างไร?</span>
+          </div>
+          <div class="faq-content"><div>
+            <p class="faq-body">ขึ้นกับจำนวนแขก เมนู ระยะทาง อุปกรณ์ และบริการเสริม เราปรับให้เข้ากับงบประมาณของคุณได้ — แนะนำบอกงบประมาณคร่าว ๆ เพื่อให้เสนอทางเลือกได้ไว</p>
+          </div></div>
+        </article>
+
+        <article class="faq-item">
+          <div class="faq-summary">
+            <span class="faq-icon">👥</span>
+            <span class="faq-title">รองรับแขกกี่ท่าน?</span>
+          </div>
+          <div class="faq-content"><div>
+            <p class="faq-body">ตั้งแต่งานเล็ก 20 ท่าน ไปจนถึง 200+ ท่าน ขึ้นกับสถานที่และรูปแบบงาน — แจ้งขนาดงานเพื่อคำนวณอุปกรณ์และทีมงานที่เหมาะสม</p>
+          </div></div>
+        </article>
+
+        <article class="faq-item">
+          <div class="faq-summary">
+            <span class="faq-icon">🗺️</span>
+            <span class="faq-title">มีบริการในศรีราชา-ชลบุรี?</span>
+          </div>
+          <div class="faq-content"><div>
+            <p class="faq-body">ใช่ เราประจำการในศรีราชา และรับงานทั่วชลบุรีและพื้นที่ใกล้เคียง (ระยอง/บางแสน/พัทยา) — ฟรี! ค่าเดินทาง 30km นอกจากนั้นค่าขนส่งคิดตามระยะทาง</p>
+          </div></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="section py-20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="grid md:grid-cols-2 gap-8 items-start">
+        <div>
+          <h2 class="text-2xl sm:text-3xl font-bold">ติดต่อ &amp; จองคิว</h2>
+          <p class="mt-2 text-neutral-300">บอกเราวันที่ จำนวนแขก และประเภทงาน แล้วเราจะช่วยออกแบบงานที่ใช่ให้คุณ</p>
+
+          <div class="mt-6 grid gap-3">
+            <!-- ย้าย LINE ขึ้นมาเป็นปุ่มอันดับแรก + ใช้สีปุ่ม/ไฟวิ่งแบบเดิม -->
+            <a id="lineBtn" class="inline-flex items-center gap-2 px-4 py-3 rounded-xl bg-brand-600 hover:bg-brand-500 font-semibold button-like relative overflow-hidden isolate" href="https://line.me/" target="_blank" rel="noopener"><span class="line-label">เพิ่มเพื่อน LINE</span></a>
+            <!-- ย้ายฟังก์ชันคัดลอกเบอร์มาไว้ที่ปุ่มถัดลงมา -->
+            <button id="phoneBtn" type="button" class="inline-flex items-center gap-2 px-4 py-3 rounded-xl bg-white/10 hover:bg-white/20 font-semibold button-like transition-all duration-300 active:scale-95 focus:outline-none focus:ring-2 focus:ring-brand-400" title="แตะเพื่อคัดลอกเบอร์">📞 โทร 094-639-5452</button>
+            <a id="mapBtn" class="inline-flex items-center gap-2 px-4 py-3 rounded-xl bg-white/10 hover:bg-white/20 button-like" href="https://maps.google.com/?q=Yin.D%20House%20Si%20Racha" target="_blank" rel="noopener">📍 เปิดแผนที่ Google Maps</a>
+          </div>
+
+          <!-- contact form removed in v1.4.9 per request -->
+        </div>
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
+          <h3 class="font-semibold">ข้อมูลธุรกิจ</h3>
+          <ul class="mt-3 text-sm text-neutral-300 grid gap-2">
+            <li><strong>ชื่อร้าน:</strong> Yin.D House (ยินดีเฮาส์)</li>
+            <li><strong>ที่ตั้ง:</strong> ศรีราชา จ.ชลบุรี</li>
+            <li><strong>เวลาเปิด:</strong> 9.00-22.00 น. (ครัวปิด 20.00 น.)</li>
+            <li><strong>บริการหลัก:</strong> จัดเลี้ยงครบวงจร • ห้องคาราโอเกะ • ครัวไทย/ยุโรป</li>
+          </ul>
+          <div class="mt-6 rounded-xl overflow-hidden border border-white/10 aspect-video relative" id="map-embed">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3884.919321901176!2d100.9542926!3d13.1674867!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3102b7d7f1735d5d%3A0x15eb41512018f5dc!2zWWluRCBIb3VzZSDguKjguKPguLXguKPguLLguIrguLI!5e0!3m2!1sth!2sth!4v1755231110172!5m2!1sth!2sth"
+              class="w-full h-full"
+              style="border:0;"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="แผนที่ Yin.D House"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-10 border-t border-white/10 bg-neutral-950">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+        <p class="text-sm text-neutral-400">© <span id="year"></span> Yin.D House — All rights reserved.</p>
+        <div class="flex items-center gap-3 text-sm">
+          <a href="#hero" class="px-3 py-2 rounded-lg bg-white/5 hover:bg-white/10">กลับขึ้นบน</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle + a11y (fix ReferenceError: btn is not defined)
+    const btn = document.getElementById('menuBtn');
+    const menu = document.getElementById('mobileMenu');
+    if (btn && menu){
+      btn.addEventListener('click', () => {
+        menu.classList.toggle('hidden');
+        btn.setAttribute('aria-expanded', String(!menu.classList.contains('hidden')));
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !menu.classList.contains('hidden')) {
+          menu.classList.add('hidden'); btn.setAttribute('aria-expanded','false');
+        }
+      });
+      document.addEventListener('click', (e) => {
+        if (!menu.classList.contains('hidden') && !menu.contains(e.target) && e.target !== btn) {
+          menu.classList.add('hidden'); btn.setAttribute('aria-expanded','false');
+        }
+      });
+    } else {
+      console.warn('menuBtn or mobileMenu not found in DOM');
+    }
+
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Phone button: copy-to-clipboard (no tel: dialing)
+    const phoneBtn = document.getElementById('phoneBtn');
+    const PHONE = '094-639-5452';
+    phoneBtn?.addEventListener('click', async () => {
+      try { await navigator.clipboard?.writeText(PHONE); } catch {}
+      const original = phoneBtn.textContent;
+      phoneBtn.textContent = 'คัดลอกแล้ว ' + PHONE + ' ✓';
+      phoneBtn.classList.add('ring-2','ring-gold-500','scale-95');
+      setTimeout(() => {
+        phoneBtn.textContent = original;
+        phoneBtn.classList.remove('ring-2','ring-gold-500','scale-95');
+      }, 1400);
+    });
+
+    // Glow on LINE button — run once only
+    let lineGlowOnce = false;
+    function startGlow(){
+      if(lineGlowOnce) return;
+      const el = document.getElementById('lineBtn');
+      if(!el) return;
+      lineGlowOnce = true;
+      el.classList.add('glow-shimmer');
+      el.style.setProperty('--glow-o','1');
+      clearTimeout(el._glowT1); clearTimeout(el._glowT2);
+      el._glowT1 = setTimeout(()=> el.style.setProperty('--glow-o','0'), 2800);
+      el._glowT2 = setTimeout(()=>{ el.classList.remove('glow-shimmer'); el.style.removeProperty('--glow-o'); }, 4000);
+    }
+
+    // Trigger glow from package CTAs
+    const triggerTexts=['จองคิวห้อง','สอบถามแพ็กเกจ','ขอรายละเอียด','เช็คคิวห้อง'];
+    const pkgCTAs=Array.from(document.querySelectorAll('#packages a'))
+      .filter(a=>triggerTexts.some(t=>a.textContent?.includes(t)));
+    pkgCTAs.forEach(a=>a.addEventListener('click',startGlow));
+
+    // Header "จองคิวเลย" — scroll to contact + glow LINE once
+    const bookTop = document.getElementById('bookTopBtn');
+    bookTop?.addEventListener('click', (e)=>{
+      e.preventDefault();
+      document.getElementById('contact')?.scrollIntoView({behavior:'smooth', block:'start'});
+      setTimeout(startGlow, 450); // run after scroll starts so user sees it
+    });
+
+    // Glow once when LINE button enters viewport (on scroll)
+    const lineEl = document.getElementById('lineBtn');
+    if ('IntersectionObserver' in window && lineEl){
+      const io = new IntersectionObserver((entries, obs)=>{
+        for (const en of entries){
+          if (en.isIntersecting){ if(!lineGlowOnce) startGlow(); obs.disconnect(); break; }
+        }
+      },{threshold:0.4, rootMargin:"0px 0px -10% 0px"});
+      io.observe(lineEl);
+    } else {
+      // Fallback
+      window.addEventListener('load', ()=> setTimeout(startGlow, 800));
+    }
+
+    // Gallery sheen: auto-run once on view with delay (no hover needed)
+    (function(){
+      const mqr = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)');
+      if (mqr && mqr.matches) return; // respect user preference
+      let played = false;
+      const gallery = document.getElementById('gallery');
+      if (!gallery) return;
+      function playSheenOnce(initialDelay=420, stagger=140, duration=1250){
+        if (played) return; played = true;
+        const cards = Array.from(gallery.querySelectorAll('.sheen'));
+        cards.forEach((el, i)=>{
+          setTimeout(()=>{
+            el.classList.add('sheen-run');
+            setTimeout(()=> el.classList.remove('sheen-run'), duration + 180);
+          }, initialDelay + i*stagger);
+        });
+      }
+      if ('IntersectionObserver' in window){
+        const io = new IntersectionObserver((entries, obs)=>{
+          for(const en of entries){
+            if (en.isIntersecting){ playSheenOnce(700, 200, 2000); obs.disconnect(); break; }
+          }
+        }, {threshold:0.25});
+        io.observe(gallery);
+      } else {
+        window.addEventListener('load', ()=> playSheenOnce(800, 200, 2000));
+      }
+    })();
+
+    
+
+    // Google Maps embed fallback → Leaflet (OSM) if iframe blocked
+    (function(){
+      const wrap = document.getElementById('map-embed');
+      if(!wrap) return;
+      const iframe = wrap.querySelector('iframe');
+      let loaded = false;
+      if (iframe) iframe.addEventListener('load', ()=> loaded = true);
+      const LAT = 13.1674867, LNG = 100.9542926;
+      function initOSM(){
+        if (wrap._osmInit) return; wrap._osmInit = true;
+        if (iframe) try{ iframe.remove(); }catch{}
+        const mapEl = document.createElement('div');
+        mapEl.id = 'osmMap';
+        mapEl.style.width = '100%'; mapEl.style.height = '100%';
+        wrap.appendChild(mapEl);
+        if (typeof L === 'undefined'){ console.warn('Leaflet not loaded'); return; }
+        const map = L.map(mapEl, { zoomControl:true, scrollWheelZoom:false }).setView([LAT, LNG], 15);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom:19, attribution:'© OpenStreetMap contributors' }).addTo(map);
+        L.marker([LAT, LNG]).addTo(map).bindPopup('Yin.D House').openPopup();
+        const go = document.createElement('a');
+        go.href = `https://www.google.com/maps?q=${LAT},${LNG}+(${encodeURIComponent('Yin.D House')})`;
+        go.target = '_blank'; go.rel = 'noopener';
+        go.className = 'absolute bottom-2 right-2 px-3 py-2 rounded-lg bg-white/80 text-neutral-900 text-xs font-semibold hover:bg-white';
+        go.textContent = 'เปิดใน Google Maps';
+        wrap.appendChild(go);
+      }
+      // If iframe blocked, its load won't fire → show fallback in ~2.5s
+      setTimeout(()=>{ if(!loaded) initOSM(); }, 2500);
+    })();
+
+    // --- Smoke tests (basic + added) ---
+    (function runSmokeTests(){
+      try{
+        console.assert(typeof startGlow === 'function', 'startGlow missing');
+        console.assert(document.getElementById('lineBtn'), 'lineBtn missing');
+        console.assert(document.getElementById('bookTopBtn'), 'bookTopBtn missing');
+        console.assert(document.getElementById('brandLogo'), 'brandLogo missing');
+        console.assert(document.getElementById('menuBtn'), 'menuBtn missing');
+        console.assert(document.getElementById('mobileMenu'), 'mobileMenu missing');
+        console.assert(typeof btn !== 'undefined', 'btn variable not defined');
+        window.addEventListener('load', ()=>{
+          const lg = document.getElementById('brandLogo');
+          console.assert(lg && lg.complete, 'brandLogo not loaded');
+          const hi = document.getElementById('heroImg');
+          console.assert(hi && hi.complete, 'hero image not loaded');
+        });
+        console.log('Smoke tests passed');
+      }catch(e){ console.warn('Smoke tests warning', e); }
+    })();
+  </script>
+</body>
+</html>
